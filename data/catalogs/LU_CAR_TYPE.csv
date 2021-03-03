@@ -1,0 +1,6 @@
+car_type_id,code,description_us,description_es,is_active
+1,small,Hatchback,Hatchback,TRUE
+2,classic,Sedan,Sedan,TRUE
+3,suv,SUV,SUV,TRUE
+4,super,Sport,Deportivo,TRUE
+5,pick_up,Pick-up,Pick-up,TRUE

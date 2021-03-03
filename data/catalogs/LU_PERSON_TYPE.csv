@@ -1,0 +1,4 @@
+person_type_id,code,description_us,description_es,is_active
+1,PF,Physical person,Persona Fisica,TRUE
+2,PFAE,Physical person with business,Persona Fisica con actividad Empresarial,TRUE
+3,PM,Moral person,Persona Moral,TRUE

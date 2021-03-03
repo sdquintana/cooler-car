@@ -1,0 +1,7 @@
+motor_type_id,code,description_us,description_es,is_active
+1,gasoline,Gasoline,Gasolina,TRUE
+2,diesel,Diesel,Diesel,TRUE
+3,lp_gas,L.P Gas,Gas L.P,TRUE
+4,n_gas,Natural Gas,Gas Natural,TRUE
+5,eletric,Eletric,Electrico,TRUE
+6,hibryd,Hibryd,Hibrido,TRUE

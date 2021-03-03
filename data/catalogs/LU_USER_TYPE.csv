@@ -1,0 +1,4 @@
+user_type_id,code,description_us,description_es,is_active
+1,person,simple person,persona ,TRUE
+2,partner,partner,socio,TRUE
+3,system,user system,usuario de sistema,TRUE

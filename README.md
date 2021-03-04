@@ -15,6 +15,19 @@ Move to path: projet_path/cooler-car/docker/cooler-car-platform
 
 `docker-compose up -d --remove-orphans` 
 
+- Move to projet_path/cooler-car/scripts/install
+
+`cd projet_path/cooler-car/scripts/install`
+
+- Set Execution permission to add_coneccion.sh
+
+`chmod +x add_coneccion.sh`
+
+- Open docker/cooler-car-platform/variables/email.json and edit tag for your email
+
+- Execution script
+
+`./add_coneccion`
 
 - Verify if mysql is ready and wait until mysql is running ok (check running /docker-entrypoint-initdb.d/cooler-car-model_create.sql script was executed
 and wait for message [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory. appears to times).
@@ -60,4 +73,21 @@ and wait for message [Server] Insecure configuration for --pid-file: Location '/
 - Click on `02-load-catalogs > Trigger DAG > Trigger` and wait for all steps fished
 
 - Repeats this for any numeral dags.
+
+
+> ### 5. Check Results
+
+- Create a connection of mysql using:
+
+`mysql -h 127.0.0.1 -u root -P 3306 -p` 
+
+- enter root
+
+una vez adentro
+
+`use dim`
+
+`select * from  DIM.AGG_RENTALS;`
+
+
 

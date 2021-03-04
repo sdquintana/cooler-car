@@ -13,6 +13,7 @@ from sqlalchemy import inspect
 from sqlalchemy.orm import sessionmaker
 
 from airflow.models import DAG
+from airflow.models import Variable
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.email_operator import EmailOperator
@@ -25,8 +26,10 @@ from operators.Models.PaymentMethod import PaymentMethod
 default_args = {'owner': 'sergio','start_date': datetime(2021, 2, 28)}
 cfg = '/usr/local/airflow/dags/templates'
 
+database = Variable.get('mysql_vars', deserialize_json=True)
+email = Variable.get('email', deserialize_json=True)
 
-engine = create_engine(f'mysql://root:root@mysql_container:3306/cooler_car', pool_pre_ping=True)
+engine = create_engine(f"mysql://{database['user']}:{database['password']}@{database['host']}:3306/{database['schema']}")
 Session = sessionmaker(bind=engine)
 session = Session()
 
@@ -97,9 +100,9 @@ with DAG('07-load-relation-tables-credit-card',
                                 python_callable=read_files)
 
     send_notification = EmailOperator(task_id='send_mail',
-                                      to='sergiodavid.quintana@gmail.com',
-                                      subject='load catalogs',
-                                      html_content='<h1>load catalogs</h1>')
+                                      to=f"{email['email']}",
+                                      subject='load credit card tables',
+                                      html_content='<h1>load credit card tables</h1>')
 
     end = DummyOperator(task_id='end')
 

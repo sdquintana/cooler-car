@@ -51,6 +51,13 @@ services:
     environment:
       - LOAD_EX=n
       - EXECUTOR=Local
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+      - POSTGRES_HOST=postgres
+      - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      - AIRFLOW__CELERY__RESULT_BACKEND=db+postgresql://airflow:airflow@postgres/airflow
     logging:
       options:
         max-size: 10m
@@ -58,6 +65,7 @@ services:
     volumes:
         - ./../../scripts/etls/dags:/usr/local/airflow/dags
         - ./../../data:/usr/local/airflow/dags/templates
+        - ./../../scripts/etls/dags/templates:/usr/local/airflow/dags/templates/sql_scritps
         - ./../../scripts/etls/dags/operators:/usr/local/airflow/dags/operators
         - ./variables:/usr/local/airflow/variables
         - ./config/airflow.cfg:/usr/local/airflow/airflow.cfg

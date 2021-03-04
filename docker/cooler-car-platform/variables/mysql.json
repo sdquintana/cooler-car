@@ -1,0 +1,8 @@
+{
+  "mysql_vars": {
+    "host": "mysql_container",
+    "user": "root",
+    "password": "root",
+    "schema": "cooler_car"
+  }
+}
